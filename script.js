@@ -81,11 +81,8 @@ function submitOrder() {
         return;
     }
     
-    // Basic telegram username validation
-    if (!telegram.startsWith('@') && !telegram.includes('t.me/')) {
-        alert('Пожалуйста, укажите ник в формате @username или ссылку t.me/username');
-        return;
-    }
+    // Accept any telegram contact format - username, link, or phone
+    // No strict validation - let users enter what they want
     
     // Change button to loading state
     const button = document.querySelector('.order-form .btn-primary');
