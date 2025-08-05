@@ -54,48 +54,68 @@ function showDemo() {
     });
 }
 
-function showSubscription() {
-    const form = document.getElementById('subscriptionForm');
-    const button = event.target;
+function showOrderForm() {
+    // Scroll to order form
+    document.querySelector('.pricing').scrollIntoView({ 
+        behavior: 'smooth' 
+    });
     
-    if (form.style.display === 'none') {
-        form.style.display = 'block';
-        button.textContent = 'Скрыть форму';
-    } else {
-        form.style.display = 'none';
-        button.textContent = 'Попробовать бесплатно';
-    }
+    // Focus on telegram input
+    setTimeout(() => {
+        document.getElementById('telegramInput').focus();
+    }, 500);
     
-    // Track subscription interest
-    gtag('event', 'subscription_interest', {
+    // Track order form interaction
+    gtag('event', 'order_form_viewed', {
         'event_category': 'conversion',
-        'event_label': 'subscription_form_toggle'
+        'event_label': 'order_form_scrolled'
     });
 }
 
-function subscribe() {
-    const email = document.getElementById('emailInput').value;
+function submitOrder() {
+    const telegram = document.getElementById('telegramInput').value;
+    const question = document.getElementById('questionInput').value;
     
-    if (!email || !email.includes('@')) {
-        alert('Пожалуйста, введите корректный email');
+    if (!telegram.trim()) {
+        alert('Пожалуйста, укажите ваш Telegram ник');
         return;
     }
     
-    // Here you would normally send the email to your backend
-    // For now, we'll just show a success message
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время для настройки бота.');
+    // Basic telegram username validation
+    if (!telegram.startsWith('@') && !telegram.includes('t.me/')) {
+        alert('Пожалуйста, укажите ник в формате @username или ссылку t.me/username');
+        return;
+    }
     
-    // Track subscription
-    gtag('event', 'subscription_attempt', {
+    // Here you would normally send the data to your backend
+    // For now, we'll just show a success message
+    const message = question.trim() 
+        ? `Спасибо! Мы свяжемся с вами в Telegram ${telegram} и ответим на ваш вопрос.`
+        : `Спасибо! Мы свяжемся с вами в Telegram ${telegram} для настройки Клиентуса.`;
+    
+    alert(message);
+    
+    // Track order submission
+    gtag('event', 'order_submitted', {
         'event_category': 'conversion',
-        'event_label': 'email_submitted',
+        'event_label': 'telegram_order',
         'value': 1
     });
     
     // Clear form
-    document.getElementById('emailInput').value = '';
-    document.getElementById('subscriptionForm').style.display = 'none';
-    document.querySelector('.pricing .btn-primary').textContent = 'Заявка отправлена!';
+    document.getElementById('telegramInput').value = '';
+    document.getElementById('questionInput').value = '';
+    
+    // Change button text
+    const button = document.querySelector('.order-form .btn-primary');
+    button.textContent = 'Заявка отправлена!';
+    button.disabled = true;
+    
+    // Reset button after 3 seconds
+    setTimeout(() => {
+        button.textContent = 'Отправить заявку';
+        button.disabled = false;
+    }, 3000);
 }
 
 // Track demo command clicks
@@ -112,6 +132,6 @@ document.addEventListener('click', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
     // Add some initial demo messages to make it look more realistic
     setTimeout(() => {
-        addMessage('Попробуйте команды выше, чтобы увидеть, как я работаю! 👆', 'bot');
+        addMessage('Попробуйте примеры выше, чтобы увидеть, как я понимаю естественную речь! 👆', 'bot');
     }, 2000);
 });

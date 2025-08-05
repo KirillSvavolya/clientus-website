@@ -31,8 +31,8 @@
                     <h2>Полный контроль бизнеса через простой диалог</h2>
                     <p>Помогаем репетиторам, тренерам и консультантам эффективно управлять своим бизнесом, используя естественную речь вместо сложных CRM-систем.</p>
                     <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="showDemo()">Попробовать демо</button>
-                        <button class="btn btn-secondary" onclick="showSubscription()">Начать использовать</button>
+                        <button class="btn btn-primary" onclick="showOrderForm()">Заказать Клиентус</button>
+                        <button class="btn btn-secondary" onclick="showDemo()">Посмотреть демо</button>
                     </div>
                 </div>
                 <div class="hero-demo">
@@ -45,7 +45,7 @@
                             <div class="chat-messages" id="chatMessages">
                                 <div class="message bot-message">
                                     <div class="message-content">
-                                        Привет! Я Клиентус — ваша CRM-система в Telegram. Помогаю репетиторам, тренерам и консультантам управлять клиентами, не теряя важной информации. Попробуйте команды справа!
+                                        Привет! Я Клиентус — ваша CRM-система в Telegram. Помогаю репетиторам, тренерам и консультантам управлять клиентами, не теряя важной информации. Говорите со мной естественным языком!
                                     </div>
                                     <div class="message-time">14:33</div>
                                 </div>
@@ -150,7 +150,7 @@
 
     <section class="pricing">
         <div class="container">
-            <h2>Начать использовать</h2>
+            <h2>Заказать Клиентус</h2>
             <div class="pricing-card">
                 <h3>Клиентус</h3>
                 <div class="price">399₽<span>/месяц</span></div>
@@ -162,12 +162,14 @@
                     <li>✅ Общение естественным языком</li>
                     <li>✅ Поддержка 24/7</li>
                 </ul>
-                <div class="subscription-form" id="subscriptionForm" style="display: none;">
-                    <input type="email" placeholder="Ваш email" id="emailInput" required>
-                    <button class="btn btn-primary" onclick="subscribe()">Начать бесплатный период</button>
-                    <p class="trial-note">14 дней бесплатно, потом 399₽/месяц</p>
+                
+                <div class="order-form" id="orderForm">
+                    <h4>Оставьте заявку на подключение</h4>
+                    <input type="text" placeholder="Ваш Telegram ник (например: @username)" id="telegramInput" required>
+                    <textarea placeholder="Есть вопросы? Напишите их здесь (необязательно)" id="questionInput" rows="3"></textarea>
+                    <button class="btn btn-primary btn-large" onclick="submitOrder()">Отправить заявку</button>
+                    <p class="trial-note">Мы свяжемся с вами в Telegram в течение дня</p>
                 </div>
-                <button class="btn btn-primary btn-large" onclick="showSubscription()">Попробовать бесплатно</button>
             </div>
         </div>
     </section>

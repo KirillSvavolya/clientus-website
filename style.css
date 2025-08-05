@@ -394,22 +394,36 @@ header h1 {
     border-bottom: 1px solid #eee;
 }
 
-.subscription-form {
+.order-form {
     margin: 20px 0;
 }
 
-.subscription-form input {
+.order-form h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.order-form input,
+.order-form textarea {
     width: 100%;
     padding: 15px;
     border: 2px solid #e9ecef;
     border-radius: 8px;
     margin-bottom: 15px;
     font-size: 1rem;
+    font-family: inherit;
 }
 
-.subscription-form input:focus {
+.order-form input:focus,
+.order-form textarea:focus {
     outline: none;
     border-color: #667eea;
+}
+
+.order-form textarea {
+    resize: vertical;
+    min-height: 80px;
 }
 
 .trial-note {
