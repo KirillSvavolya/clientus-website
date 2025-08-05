@@ -1,0 +1,462 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Hero Section */
+.hero {
+    padding: 60px 0;
+    background: white;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #5a6c7d;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+.btn-large {
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+/* Phone Mockup */
+.phone-mockup {
+    background: #000;
+    border-radius: 25px;
+    padding: 20px;
+    max-width: 350px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.chat-demo {
+    background: #f8f9fa;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: #667eea;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bot-name {
+    font-weight: 600;
+}
+
+.online-status {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 15px;
+}
+
+.bot-message .message-content {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 18px 18px 18px 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 80%;
+}
+
+.user-message .message-content {
+    background: #667eea;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 18px 18px 4px 18px;
+    max-width: 80%;
+    margin-left: auto;
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* Demo Commands */
+.demo-commands {
+    background: #f8f9fa;
+    padding: 40px 0;
+}
+
+.demo-commands h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.command-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.command-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.command-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+    transform: translateY(-1px);
+}
+
+/* Problems & Solutions */
+.problems-solutions {
+    padding: 60px 0;
+    background: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.problem-card, .solution-card, .advantage-card, .convenience-card {
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.problem-card {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+.solution-card {
+    background: linear-gradient(135deg, #51cf66, #40c057);
+    color: white;
+}
+
+.advantage-card {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+}
+
+.convenience-card {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+}
+
+.problem-card h3, .solution-card h3, .advantage-card h3, .convenience-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* Comparison */
+.comparison {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.comparison h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.before, .after {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.before h3 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.after h3 {
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+.before ul, .after ul {
+    list-style: none;
+}
+
+.before li, .after li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.before li:before {
+    content: "❌ ";
+    margin-right: 10px;
+}
+
+.after li:before {
+    content: "✅ ";
+    margin-right: 10px;
+}
+
+/* Team */
+.team {
+    padding: 60px 0;
+    background: white;
+}
+
+.team h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    text-align: center;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.team-member h4 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.role {
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Pricing */
+.pricing {
+    padding: 60px 0;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.pricing h2 {
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.pricing-card {
+    background: white;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.pricing-card h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 30px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #999;
+}
+
+.pricing-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.pricing-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.subscription-form {
+    margin: 20px 0;
+}
+
+.subscription-form input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.subscription-form input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.trial-note {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero-text h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .before-after {
+        grid-template-columns: 1fr;
+    }
+    
+    .command-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .command-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
