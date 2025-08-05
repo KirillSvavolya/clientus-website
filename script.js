@@ -102,7 +102,7 @@ function submitOrder() {
         reply_to: 'noreply@clientus.com'
     };
     
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    emailjs.send('service_y4zcyt6', 'template_dj5ldfq', templateParams)
         .then(function(response) {
             console.log('Email sent successfully:', response);
             
