@@ -87,35 +87,66 @@ function submitOrder() {
         return;
     }
     
-    // Here you would normally send the data to your backend
-    // For now, we'll just show a success message
-    const message = question.trim() 
-        ? `Спасибо! Мы свяжемся с вами в Telegram ${telegram} и ответим на ваш вопрос.`
-        : `Спасибо! Мы свяжемся с вами в Telegram ${telegram} для настройки Клиентуса.`;
-    
-    alert(message);
-    
-    // Track order submission
-    gtag('event', 'order_submitted', {
-        'event_category': 'conversion',
-        'event_label': 'telegram_order',
-        'value': 1
-    });
-    
-    // Clear form
-    document.getElementById('telegramInput').value = '';
-    document.getElementById('questionInput').value = '';
-    
-    // Change button text
+    // Change button to loading state
     const button = document.querySelector('.order-form .btn-primary');
-    button.textContent = 'Заявка отправлена!';
+    const originalText = button.textContent;
+    button.textContent = 'Отправляем...';
     button.disabled = true;
     
-    // Reset button after 3 seconds
-    setTimeout(() => {
-        button.textContent = 'Отправить заявку';
-        button.disabled = false;
-    }, 3000);
+    // Send email via EmailJS
+    const templateParams = {
+        telegram_username: telegram,
+        user_question: question.trim() || 'Без вопросов',
+        to_email: 'kirill.svavolia@gmail.com',
+        from_name: 'Клиентус Landing Page',
+        reply_to: 'noreply@clientus.com'
+    };
+    
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            console.log('Email sent successfully:', response);
+            
+            const message = question.trim() 
+                ? `Спасибо! Мы получили вашу заявку и свяжемся с вами в Telegram ${telegram}, а также ответим на ваш вопрос.`
+                : `Спасибо! Мы получили вашу заявку и свяжемся с вами в Telegram ${telegram} для настройки Клиентуса.`;
+            
+            alert(message);
+            
+            // Track successful order submission
+            gtag('event', 'order_submitted', {
+                'event_category': 'conversion',
+                'event_label': 'telegram_order_success',
+                'value': 1
+            });
+            
+            // Clear form
+            document.getElementById('telegramInput').value = '';
+            document.getElementById('questionInput').value = '';
+            
+            // Success state
+            button.textContent = 'Заявка отправлена!';
+            
+            // Reset button after 5 seconds
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 5000);
+            
+        }, function(error) {
+            console.error('Email send failed:', error);
+            
+            alert('Произошла ошибка при отправке заявки. Попробуйте еще раз или напишите нам на kirill.svavolia@gmail.com');
+            
+            // Track failed submission
+            gtag('event', 'order_failed', {
+                'event_category': 'conversion',
+                'event_label': 'telegram_order_error'
+            });
+            
+            // Reset button
+            button.textContent = originalText;
+            button.disabled = false;
+        });
 }
 
 // Track demo command clicks
